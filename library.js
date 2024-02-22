@@ -64,13 +64,18 @@ cancelFormButton.addEventListener("click", (e) => {
 const addBookButton = document.querySelector('#add-book-button');
 addBookButton.addEventListener('click', (e) => {
     e.preventDefault();
-    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, publishedInput.value, Boolean(readInput.value.toLowerCase()));
-    myLibrary.push(newBook);
-    console.log(myLibrary);
-    dialog.close();
-    bookForm.reset();
-    displayLibrary();
+    if(titleInput.value && authorInput.value && pagesInput.value && publishedInput.value && readInput.value){
+        let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, publishedInput.value, Boolean(readInput.value.toLowerCase()));
+        myLibrary.push(newBook);
+        bookForm.reset();
+        dialog.close();
+        displayLibrary();
+    }else{
+        alert('Fill in all values');
+    }
+    
 });
+
 
 function displayLibrary(){
     contentContainer.innerHTML = ' ';
