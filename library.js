@@ -105,13 +105,13 @@ function removeBook(event) {
     if (event.target.classList.contains('remove-book-button')) {
         const index = card.dataset.index;
         myLibrary.splice(index, 1);
-        card.parentNode.removeChild(card);
-        //displayLibrary();
+        displayLibrary();
     }
     if (event.target.classList.contains('toggle-read-button')) {
         const index = card.dataset.index;
         myLibrary[index].read = !myLibrary[index].read;
         card.querySelector('#read-paragraph').innerHTML = `<b>Read:</b> ${myLibrary[index].read}`;
         console.log(myLibrary[index].read);
+        console.log(index);
     }
 }
